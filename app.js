@@ -1,11 +1,13 @@
 // Reemplaza con tu configuración de Firebase
+
 const firebaseConfig = {
-    apiKey: "TU_API_KEY",
-    authDomain: "TU_PROYECTO.firebaseapp.com",
-    projectId: "TU_PROYECTO",
-    storageBucket: "TU_PROYECTO.appspot.com",
-    messagingSenderId: "TU_ID",
-    appId: "TU_APP_ID"
+  apiKey: "AIzaSyB7s7CD0msZTKYQ0hofwj34A18FUSzkq2k",
+  authDomain: "ferreteria-online-f0975.firebaseapp.com",
+  projectId: "ferreteria-online-f0975",
+  storageBucket: "ferreteria-online-f0975.firebasestorage.app",
+  messagingSenderId: "442919643384",
+  appId: "1:442919643384:web:16b3a3f58b7fb85513330d",
+  measurementId: "G-J9F8KSTMZQ"
 };
 
 // Inicializar Firebase
