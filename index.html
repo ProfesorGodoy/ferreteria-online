@@ -5,7 +5,31 @@
     <title>Ferretería Online</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
-<body>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyB7s7CDOmSZTKYQehofwj34A18FUSzkq2k",
+    authDomain: "ferreteria-online-f0975.firebaseapp.com",
+    projectId: "ferreteria-online-f0975",
+    storageBucket: "ferreteria-online-f0975.appspot.com",
+    messagingSenderId: "442919643384",
+    appId: "1:442919643384:web:16b3a3f58b7fb85513330d"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // PRUEBA: guardar algo en Firestore
+  await addDoc(collection(db, "prueba"), {
+    mensaje: "Hola desde Ferretería Online"
+  });
+
+  console.log("🔥 Firestore conectado");
+</script>
+
+    <body>    
     <header>
         <h1>Bienvenidos a Ferretería Online</h1>
         <nav>
