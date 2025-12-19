@@ -10,9 +10,10 @@ const firebaseConfig = {
   measurementId: "G-J9F8KSTMZQ"
 };
 
-// Inicializar Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
+
+alert("🔥 Firestore conectado correctamente");
 
 // Guardar mensajes del formulario
 const formulario = document.getElementById('formularioContacto');
