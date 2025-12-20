@@ -1,58 +1,64 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Ferretería Online</title>
-    <link rel="stylesheet" href="estilos.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Contacto</title>
 </head>
+<body>
+  <h1>Contacto</h1>
 
-    <body>    
-    <header>
-        <h1>Bienvenidos a Ferretería Online</h1>
-        <nav>
-            <a href="index.html">Inicio</a> |
-            <a href="productos.html">Productos</a> |
-            <a href="contacto.html">Contacto</a>
-        </nav>
-    </header>
+  <!-- Formulario -->
+  <form id="formularioContacto">
+    <label for="nombre">Nombre:</label><br>
+    <input type="text" id="nombre" required><br><br>
 
-    <section>
-        <h2>Sobre Nosotros</h2>
-        <p>Vendemos herramientas y materiales de construcción de calidad. ¡Visítanos o realiza tu pedido online!</p>
-    </section>
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" required><br><br>
 
-    <footer>
-        <p>Ferretería Online - Todos los derechos reservados</p>
-    </footer>
-        <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+    <label for="mensaje">Mensaje:</label><br>
+    <textarea id="mensaje" required></textarea><br><br>
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyB7s7CDOmSZTKYQehofwj34A18FUSzkq2k",
-    authDomain: "ferreteria-online-f0975.firebaseapp.com",
-    projectId: "ferreteria-online-f0975",
-    storageBucket: "ferreteria-online-f0975.appspot.com",
-    messagingSenderId: "442919643384",
-    appId: "1:442919643384:web:16b3a3f58b7fb85513330d"
-  };
+    <button type="submit">Enviar</button>
+  </form>
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+  <!-- Firebase scripts -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 
-  // PRUEBA: guardar algo en Firestore
-  await addDoc(collection(db, "prueba"), {
-    mensaje: "Hola desde Ferretería Online"
-  });
+  <!-- Código JavaScript -->
+  <script>
+    // Tu configuración de Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyB7s7CD0msZTKYQ0hofwj34A18FUSzkq2k",
+      authDomain: "ferreteria-online-f0975.firebaseapp.com",
+      projectId: "ferreteria-online-f0975",
+      storageBucket: "ferreteria-online-f0975.firebasestorage.app",
+      messagingSenderId: "442919643384",
+      appId: "1:442919643384:web:16b3a3f58b7fb85513330d",
+      measurementId: "G-J9F8KSTMZQ"
+    };
 
-  console.log("🔥 Firestore conectado");
-</script>
-<!-- Firebase core -->
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-<!-- Firebase Firestore -->
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-<!-- Tu archivo JS -->
-<script src="ferreteria-online-f0975.js"></script> <!-- Cambia 'tu-archivo.js' por el nombre real -->
+    // Inicializar Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
 
+    // ALERTA para probar que se conectó
+    alert("🔥 Firestore conectado correctamente");
+
+    // Guardar mensajes del formulario
+    const formulario = document.getElementById('formularioContacto');
+    formulario.addEventListener('submit', (e) => {
+      e.preventDefault();
+      db.collection("contactos").add({
+        nombre: document.getElementById('nombre').value,
+        email: document.getElementById('email').value,
+        mensaje: document.getElementById('mensaje').value,
+        fecha: new Date()
+      })
+      .then(() => alert("Mensaje enviado!"))
+      .catch(err => alert("Error: " + err));
+    });
+  </script>
 </body>
 </html>
